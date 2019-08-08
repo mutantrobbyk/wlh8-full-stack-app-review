@@ -11,9 +11,10 @@ module.exports = {
     }
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(password, salt)
-    const newUser = await db.insert_user_info({ username, email }) // newUser: [{}]
+    const newUser = await db.insert_user_info({ username, email }) // newUser: [{user_id: 1,...}]
     db.insert_hash({ hash, user_id: newUser[0].user_id })
       .then(() => {
+        db.create_account([newUser[0].user_id])
         req.session.user = newUser[0] // newUser: [{}], newUser[0]: {}
         res
           .status(200)

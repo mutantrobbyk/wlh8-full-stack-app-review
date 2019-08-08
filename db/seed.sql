@@ -1,8 +1,15 @@
+drop table if exists credentials;
+drop table if exists transfer;
+drop table if exists account;
+drop table if exists user_info;
+
+
 Create table user_info(
 user_id SERIAL PRIMARY KEY,
 username VARCHAR(50),
 email VARCHAR(100)
 );
+
 
 CREATE TABLE credentials(
 user_id INT,
@@ -12,7 +19,6 @@ hash TEXT
 CREATE TABLE account(
 account_id SERIAL PRIMARY KEY,
 user_id INT REFERENCES user_info(user_id),
-account_number INT,
 account_balance INT
 );
 

@@ -13,6 +13,7 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt)
         const newUser = await db.insert_user_info({username, email})
         db.insert_hash({hash, user_id: newUser[0].user_id}).then(() => {
+            db.create_account([newUser[0].user_id])
             req.session.user = newUser[0]
             res.status(200).send({message: 'Logged in',user: req.session.user, logggedIn: true})
         })

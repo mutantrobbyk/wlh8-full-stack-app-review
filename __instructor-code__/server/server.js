@@ -17,10 +17,12 @@ app.use(session({
   }
 }))
 
-app.post('/auth/register', authCtrl.register)
-app.delete('/auth/logout', authCtrl.logout)
 
 massive(CONNECTION_STRING).then(db => {
   app.set('db', db)
   app.listen(SERVER_PORT, () => console.log(`Listening on ${SERVER_PORT}`))
 })
+
+
+app.post('/auth/register', authCtrl.register)
+app.delete('/auth/logout', authCtrl.logout)

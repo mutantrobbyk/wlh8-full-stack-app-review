@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default (props) => (
-    <select>
+    <select onChange={e => props.changeFn(props.prop, e)}>
        {props.children}
     </select>
 )

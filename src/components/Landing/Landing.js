@@ -10,7 +10,20 @@ export default class Landing extends Component {
     render() {
         return (
             <div className='Landing'>
-                Landing
+                <div className='left'>
+                    <div className='logo'>
+                        <div>$</div>
+                    </div>
+                </div>
+                <div className='right'>
+                <div className="inputs-container">
+                    <input type="text" placeholder='username'/>
+                    <input type="text" placeholder='email'/>
+                    <input type="password" placeholder='password'/>
+                    <button>Register</button>
+                    <button>Login</button>
+                </div>
+                </div>
             </div>
         )
     }
